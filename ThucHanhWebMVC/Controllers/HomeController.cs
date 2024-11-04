@@ -28,7 +28,7 @@ namespace ThucHanhWebMVC.Controllers
             PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(listsanpham, pageNumber, pageSize);
             return View(lst);
         }
-        //[Authentication]
+        [Authentication]
         public IActionResult SanPhamTheoLoai(String maloai, int? page)
         {
             int pageSize = 8;
@@ -38,7 +38,7 @@ namespace ThucHanhWebMVC.Controllers
             ViewBag.MaLoai = maloai;
             return View(lst);
         }
-
+        [Authentication]
         public IActionResult ChiTietSanPham(string maSp)
         {
             var sanPham = db.TDanhMucSps.SingleOrDefault(x=>x.MaSp == maSp);
@@ -46,7 +46,7 @@ namespace ThucHanhWebMVC.Controllers
             ViewBag.anhSanPham = anhSanPham;
             return View(sanPham);
         }
-
+        [Authentication]
         public IActionResult ProductDetail(string maSp)
         {
             var sanPham = db.TDanhMucSps.SingleOrDefault(x => x.MaSp == maSp);

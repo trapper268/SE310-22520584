@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ThucHanhWebMVC.Models;
+using ThucHanhWebMVC.Models.Authentication;
 using X.PagedList;
 
 namespace ThucHanhWebMVC.Areas.Admin.Controllers
@@ -18,6 +19,7 @@ namespace ThucHanhWebMVC.Areas.Admin.Controllers
 
         [Route("")]
         [Route("index")]
+        [Authentication]
         public IActionResult Index()
         {
             
@@ -25,6 +27,7 @@ namespace ThucHanhWebMVC.Areas.Admin.Controllers
         }
 
         [Route("danhmucsanpham")]
+        [Authentication]
         public IActionResult DanhMucSanPham(int? page)
         {
             int pageSize = 12;
@@ -35,6 +38,7 @@ namespace ThucHanhWebMVC.Areas.Admin.Controllers
         }
 
         [Route("ChiTietSanPham")]
+        [Authentication]
         public IActionResult ChiTietSanPham(string maSanPham)
         {
             var sanPham = db.TDanhMucSps.Find(maSanPham);
@@ -43,6 +47,7 @@ namespace ThucHanhWebMVC.Areas.Admin.Controllers
 
         [Route("ThemSanPhamMoi")]
         [HttpGet]
+        [Authentication]
         public IActionResult ThemSanPhamMoi()
         {
             ViewBag.MaChatLieu = new SelectList(db.TChatLieus.ToList(), "MaChatLieu", "ChatLieu");
